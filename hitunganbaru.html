@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hitung Total</title>
+  </head>
+  <body>
+    <h2>Hitung Total</h2>
+
+    <input type="number" id="itemCount" placeholder="Jumlah item" />
+    <input type="number" id="pricePerItem" placeholder="Harga per item" />
+    <button onclick="calculate()">Hitung</button>
+
+    <p id="result"></p>
+
+    <script>
+      const MAX_TOTAL = 100;
+      const TAX_RATE = 0.1;
+
+      // Fungsi utama
+      function calculate() {
+        const itemCount = getInputValue("itemCount");
+        const pricePerItem = getInputValue("pricePerItem");
+
+        const total = calculateTotal(itemCount, pricePerItem);
+        const tax = calculateTax(total);
+
+        displayResult(total, tax);
+      }
+
+      // Ambil nilai input
+      function getInputValue(id) {
+        return parseFloat(document.getElementById(id).value) || 0;
+      }
+
+      // Hitung total
+      function calculateTotal(itemCount, pricePerItem) {
+        const total = itemCount * pricePerItem;
+        return Math.min(total, MAX_TOTAL);
+      }
+
+      // Hitung pajak
+      function calculateTax(total) {
+        return total * TAX_RATE;
+      }
+
+      // Tampilkan hasil
+      function displayResult(total, tax) {
+        document.getElementById("result").innerHTML =
+          "Total: " + total + " | Pajak: " + tax;
+      }
+    </script>
+  </body>
+</html>

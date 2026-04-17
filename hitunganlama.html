@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hitung</title>
+  </head>
+  <body>
+    <h2>Hitung Total</h2>
+
+    <input type="number" id="a" />
+    <input type="number" id="b" />
+    <button onclick="x()">Hitung</button>
+
+    <p id="h"></p>
+
+    <script>
+      function x() {
+        var r = document.getElementById("a").value;
+        var s = document.getElementById("b").value;
+
+        var t = r * s;
+
+        if (t > 100) {
+          t = 100;
+        }
+
+        var p = t * 0.1;
+
+        document.getElementById("h").innerHTML = t + " " + p;
+      }
+    </script>
+  </body>
+</html>
